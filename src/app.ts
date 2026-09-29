@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import * as path from 'node:path';
+import * as fs from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { getDatabase } from './db/connection.js';
 import { AuthService, UserSession } from './services/auth.service.js';
@@ -78,8 +79,16 @@ export function createApp(customDb?: DatabaseSync) {
 
   // Root and Health check
   app.get('/', (req, res) => {
-    const indexPath = path.join(process.cwd(), 'public', 'index.html');
-    res.sendFile(indexPath);
+    const candidatePaths = [
+      path.join(process.cwd(), 'index.html'),
+      path.join(process.cwd(), 'public', 'index.html')
+    ];
+    for (const p of candidatePaths) {
+      if (fs.existsSync(p)) {
+        return res.sendFile(p);
+      }
+    }
+    res.status(200).send('AIIF Incubation & TANSEED Operating System Backend Active');
   });
 
   app.get('/api/health', (req, res) => {
@@ -622,6 +631,14 @@ export function createApp(customDb?: DatabaseSync) {
       res.json(result);
     } catch (e) {
       res.status(500).json({ error: (e as Error).message });
+    }
+  });
+
+  // Global error handler
+  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    console.error('Unhandled Application Error:', err);
+    if (!res.headersSent) {
+      res.status(500).json({ error: err.message || 'Internal Server Error' });
     }
   });
 

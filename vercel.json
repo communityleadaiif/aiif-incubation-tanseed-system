@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/index.html",
-      "permanent": false
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "{src/db/migrations/**,public/**,index.html,css/**,js/**}"
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
