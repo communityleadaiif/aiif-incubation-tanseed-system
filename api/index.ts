@@ -5,9 +5,9 @@ import { seedDemoData } from '../src/db/seed.js';
 
 let appInstance: any = null;
 
-export default function handler(req: any, res: any) {
+function getApp() {
   if (!appInstance) {
-    if (process.env.VERCEL && !process.env.DATABASE_PATH) {
+    if (!process.env.DATABASE_PATH) {
       process.env.DATABASE_PATH = '/tmp/aiif_database.sqlite';
     }
     const db = getDatabase();
@@ -19,5 +19,10 @@ export default function handler(req: any, res: any) {
     }
     appInstance = createApp(db);
   }
-  return appInstance(req, res);
+  return appInstance;
+}
+
+export default function handler(req: any, res: any) {
+  const app = getApp();
+  return app(req, res);
 }
