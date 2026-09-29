@@ -76,7 +76,12 @@ export function createApp(customDb?: DatabaseSync) {
     };
   };
 
-  // Health check
+  // Root and Health check
+  app.get('/', (req, res) => {
+    const indexPath = path.join(process.cwd(), 'public', 'index.html');
+    res.sendFile(indexPath);
+  });
+
   app.get('/api/health', (req, res) => {
     res.json({ status: 'HEALTHY', timestamp: new Date().toISOString(), db: 'CONNECTED' });
   });
