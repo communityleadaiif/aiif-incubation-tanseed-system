@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIIF Incubatee & TANSEED Management Operating System</title>
+  
+  <!-- Fonts: Outfit (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <div id="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-header">
+        <div class="brand-logo">AIIF</div>
+        <div class="brand-text">
+          <h1>AIIF Incubation</h1>
+          <p>AJK Innovation Hub</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-section-title">Core Operating System</div>
+        <div class="nav-item active" data-tab="dashboard">
+          <span class="icon">📊</span>
+          <span>Executive Dashboard</span>
+        </div>
+        <div class="nav-item" data-tab="startups">
+          <span class="icon">🏢</span>
+          <span>Startup Master Directory</span>
+        </div>
+        <div class="nav-item" data-tab="historical">
+          <span class="icon">📜</span>
+          <span>Historical Support & Proof</span>
+        </div>
+
+        <div class="nav-section-title">Governance & Approvals</div>
+        <div class="nav-item" data-tab="evaluations">
+          <span class="icon">📝</span>
+          <span>Incubation Evaluations</span>
+        </div>
+        <div class="nav-item" data-tab="committee">
+          <span class="icon">🏛️</span>
+          <span>Committee Resolutions</span>
+        </div>
+        <div class="nav-item" data-tab="agreements">
+          <span class="icon">📑</span>
+          <span>Formal Agreements</span>
+        </div>
+
+        <div class="nav-section-title">Incubation Lifecycle</div>
+        <div class="nav-item" data-tab="mentors">
+          <span class="icon">👨‍🏫</span>
+          <span>Mentors & Sessions</span>
+        </div>
+        <div class="nav-item" data-tab="milestones">
+          <span class="icon">🎯</span>
+          <span>Milestones & Reviews</span>
+        </div>
+        <div class="nav-item" data-tab="tanseed">
+          <span class="icon">🚀</span>
+          <span>TANSEED Grant Tracker</span>
+        </div>
+
+        <div class="nav-section-title">Institutional Assets</div>
+        <div class="nav-item" data-tab="documents">
+          <span class="icon">📄</span>
+          <span>Document Center</span>
+        </div>
+        <div class="nav-item" data-tab="audit">
+          <span class="icon">🛡️</span>
+          <span>Immutable Audit Trail</span>
+        </div>
+        <div class="nav-item" data-tab="backup">
+          <span class="icon">💾</span>
+          <span>Backup & Recovery</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-card">
+          <div class="user-avatar" id="current-user-avatar">CEO</div>
+          <div class="user-info">
+            <div class="name" id="current-user-name">Chief Executive Officer</div>
+            <div class="role-badge" id="current-user-role">Role: CEO (Full Admin)</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="page-title">
+          <h2 id="view-title">Executive Portfolio Dashboard</h2>
+          <p id="view-subtitle">AIIF Institutional Incubation Governance & Evidence System</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="system-status-indicator">
+            <div class="status-dot"></div>
+            <span>ACID DB Live & Synchronized</span>
+          </div>
+          <select id="role-switcher" class="form-control" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">
+            <option value="CEO">Acting as: CEO (Full Approvals)</option>
+            <option value="INCUBATION_MGR">Acting as: Incubation Manager</option>
+            <option value="AUDITOR">Acting as: Auditor / Viewer</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- Content Body Area -->
+      <div class="content-body">
+
+        <!-- ================================================================= -->
+        <!-- TAB 1: EXECUTIVE DASHBOARD -->
+        <!-- ================================================================= -->
+        <section id="tab-dashboard" class="tab-panel active">
+          <!-- Anti-fabrication reminder banner -->
+          <div class="anti-fabrication-notice">
+            <div class="icon">⚖️</div>
+            <div class="text">
+              <h4>Institutional Anti-Fabrication & Evidence Principle</h4>
+              <p>Historical informal support interactions and formal legal incubation agreements are strictly decoupled. All institutional letters and TANSEED filings must be grounded in verified documentary evidence on record.</p>
+            </div>
+          </div>
+
+          <!-- KPI Cards Grid -->
+          <div class="kpi-grid">
+            <div class="kpi-card gold">
+              <div class="kpi-header">
+                <span class="kpi-title">Active Incubatees</span>
+                <span class="kpi-icon">🏢</span>
+              </div>
+              <div class="kpi-value" id="kpi-active-count">1</div>
+              <div class="kpi-subtext">100% formal agreement compliance</div>
+            </div>
+
+            <div class="kpi-card emerald">
+              <div class="kpi-header">
+                <span class="kpi-title">TANSEED Finalists</span>
+                <span class="kpi-icon">🚀</span>
+              </div>
+              <div class="kpi-value" id="kpi-tanseed-count">1</div>
+              <div class="kpi-subtext">Cohort 7.0 Grand Jury stage</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Total Funding Pipeline</span>
+                <span class="kpi-icon">💰</span>
+              </div>
+              <div class="kpi-value" id="kpi-funding-pipeline">₹15,00,000</div>
+              <div class="kpi-subtext">Government Seed Grants & CaaS</div>
+            </div>
+
+            <div class="kpi-card purple">
+              <div class="kpi-header">
+                <span class="kpi-title">Audit Trail Events</span>
+                <span class="kpi-icon">🛡️</span>
+              </div>
+              <div class="kpi-value" id="kpi-audit-count">14</div>
+              <div class="kpi-subtext">Append-only immutable records</div>
+            </div>
+          </div>
+
+          <!-- Active Startups Summary -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Incubation Portfolio Highlights</h3>
+                <p>Real-time status of startups admitted under AIIF governance</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewStartupModal()">+ Add New Startup</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>AIIF Startup ID</th>
+                    <th>Startup Legal & Brand Name</th>
+                    <th>Sector</th>
+                    <th>TRL</th>
+                    <th>Status</th>
+                    <th>TANSEED Stage</th>
+                    <th>Historical Proof</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-startup-tbody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 2: STARTUP MASTER DIRECTORY -->
+        <!-- ================================================================= -->
+        <section id="tab-startups" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Startup Master Directory</h3>
+                <p>Authoritative single-source-of-truth master records for all incubatees</p>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <input type="text" id="startup-search-input" class="form-control" placeholder="Search startup name / ID..." style="width: 250px;">
+                <button class="btn btn-primary" onclick="app.openNewStartupModal()">+ Create Master Record</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Startup Code</th>
+                    <th>Company Name</th>
+                    <th>Corporate CIN / DPIIT</th>
+                    <th>Founders</th>
+                    <th>Sector & TRL</th>
+                    <th>Incubation Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="startups-directory-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 3: HISTORICAL SUPPORT & EVIDENCE TRAIL -->
+        <!-- ================================================================= -->
+        <section id="tab-historical" class="tab-panel">
+          <div class="anti-fabrication-notice">
+            <div class="icon">📜</div>
+            <div class="text">
+              <h4>Historical Incubation Support Record (Informal Assistance)</h4>
+              <p>Documents genuine past interactions (meetings, pitch reviews, mentoring) prior to formal agreement execution. Every record includes verifiable evidence references.</p>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Verified Historical Interactions</h3>
+                <p>Chronological evidence trail of historical assistance provided by AIIF</p>
+              </div>
+              <button class="btn btn-gold btn-sm" onclick="app.openNewHistoryModal()">+ Log Historical Interaction</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Record ID</th>
+                    <th>Startup</th>
+                    <th>Actual Date</th>
+                    <th>Category</th>
+                    <th>AIIF Support Description</th>
+                    <th>Participants</th>
+                    <th>Evidence Reference</th>
+                  </tr>
+                </thead>
+                <tbody id="historical-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 4: INCUBATION APPLICATIONS & EVALUATIONS -->
+        <!-- ================================================================= -->
+        <section id="tab-evaluations" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Institutional Incubation Evaluations</h3>
+                <p>9-criteria weighted evaluation scoring matrix (0–100 scale)</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewEvaluationModal()">+ Conduct New Evaluation</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Evaluation ID</th>
+                    <th>Startup</th>
+                    <th>Evaluator</th>
+                    <th>Total Score</th>
+                    <th>Recommendation</th>
+                    <th>Evaluator Remarks</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="evaluations-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 5: COMMITTEE RESOLUTIONS -->
+        <!-- ================================================================= -->
+        <section id="tab-committee" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Incubation Committee Meetings & Resolutions</h3>
+                <p>Formal board decisions and admission resolutions</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewMeetingModal()">+ Record Committee Meeting</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Meeting Code</th>
+                    <th>Meeting Date</th>
+                    <th>Startup Reviewed</th>
+                    <th>Formal Decision</th>
+                    <th>Resolution Summary</th>
+                    <th>Signatory</th>
+                  </tr>
+                </thead>
+                <tbody id="committee-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 6: FORMAL INCUBATION AGREEMENTS -->
+        <!-- ================================================================= -->
+        <section id="tab-agreements" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Incubation & Startup Support Agreements</h3>
+                <p>Formal legal contracts executed on actual calendar dates</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewAgreementModal()">+ Draft Incubation Agreement</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Agreement Code</th>
+                    <th>Reference Number</th>
+                    <th>Startup</th>
+                    <th>Commencement Date</th>
+                    <th>Execution Date</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="agreements-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 7: MENTORS & SESSIONS -->
+        <!-- ================================================================= -->
+        <section id="tab-mentors" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>AIIF Mentor Directory & Session Logs</h3>
+                <p>Assigned domain mentors and structured session action items</p>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-secondary btn-sm" onclick="app.openNewMentorModal()">+ Add Mentor</button>
+                <button class="btn btn-primary btn-sm" onclick="app.openNewSessionModal()">+ Log Mentor Session</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Session ID</th>
+                    <th>Startup</th>
+                    <th>Mentor</th>
+                    <th>Date</th>
+                    <th>Topics Discussed</th>
+                    <th>Action Items & Commitments</th>
+                    <th>Next Meeting</th>
+                  </tr>
+                </thead>
+                <tbody id="mentors-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 8: MILESTONES & MONTHLY REVIEWS -->
+        <!-- ================================================================= -->
+        <section id="tab-milestones" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Startup Milestone Tracking</h3>
+                <p>Baseline vs. target progress state with target completion timelines</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewMilestoneModal()">+ Add Milestone</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Milestone Code</th>
+                    <th>Startup</th>
+                    <th>Title & Category</th>
+                    <th>Baseline State</th>
+                    <th>Target State</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="milestones-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 9: TANSEED & GOVERNMENT SCHEMES -->
+        <!-- ================================================================= -->
+        <section id="tab-tanseed" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>TANSEED & Government Seed Fund Tracker</h3>
+                <p>Stage progression, grant application records, and sanction tracking</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openNewSchemeAppModal()">+ Log Scheme Application</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Application Code</th>
+                    <th>Startup</th>
+                    <th>Funding Scheme</th>
+                    <th>External App No</th>
+                    <th>Current Stage</th>
+                    <th>Requested</th>
+                    <th>Sanctioned</th>
+                    <th>Communications Log</th>
+                  </tr>
+                </thead>
+                <tbody id="tanseed-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 10: DOCUMENT GENERATION CENTER -->
+        <!-- ================================================================= -->
+        <section id="tab-documents" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Institutional Document Center</h3>
+                <p>Branded AIIF institutional support letters, confirmations, and agreements</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.openGenerateDocModal()">+ Issue Branded Document</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Document Reference</th>
+                    <th>Title</th>
+                    <th>Startup</th>
+                    <th>Type</th>
+                    <th>Version</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="documents-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 11: IMMUTABLE AUDIT TRAIL -->
+        <!-- ================================================================= -->
+        <section id="tab-audit" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Append-Only Immutable Audit Trail</h3>
+                <p>Cryptographically verifiable record of all system events, mutations, and approvals</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="app.loadAuditLogs()">🔄 Refresh Audit Trail</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Audit Code</th>
+                    <th>Action</th>
+                    <th>Entity Type</th>
+                    <th>Entity Code</th>
+                    <th>Actor</th>
+                    <th>Timestamp</th>
+                    <th>Reason / Justification</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-tbody">
+                  <!-- Dynamic content -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 12: BACKUP & RECOVERY CONSOLE -->
+        <!-- ================================================================= -->
+        <section id="tab-backup" class="tab-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Automated Backup & Disaster Recovery Console</h3>
+                <p>Create full VACUUM snapshot backups and verify database restoration fidelity</p>
+              </div>
+              <button class="btn btn-primary" onclick="app.triggerBackup()">💾 Create Snapshot Backup Now</button>
+            </div>
+            <div id="backup-status-area" style="margin-top: 16px;">
+              <p style="color: var(--text-secondary); font-size: 0.88rem;">Click the button above to generate a timestamped, SHA-256 hashed database snapshot.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: CREATE STARTUP -->
+  <!-- ===================================================================== -->
+  <div id="modal-startup" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Create New Startup Master File</h3>
+        <button class="modal-close" onclick="app.closeModal('modal-startup')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-create-startup">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Startup Legal Name *</label>
+              <input type="text" name="legalName" class="form-control" placeholder="e.g. AgriCool Innovations Pvt Ltd" required>
+            </div>
+            <div class="form-group">
+              <label>Trade / Brand Name *</label>
+              <input type="text" name="brandName" class="form-control" placeholder="e.g. AgriCool IoT" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Sector *</label>
+              <select name="sectorCode" class="form-control" required>
+                <option value="AGRITECH">Agriculture & Food Technology</option>
+                <option value="AI_ML">Artificial Intelligence & DeepTech</option>
+                <option value="HEALTHTECH">Healthcare & Biomedical</option>
+                <option value="CLEANTECH">CleanTech & Renewable Energy</option>
+                <option value="SAAS">Enterprise Software & SaaS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Current Technology Readiness Level (TRL) *</label>
+              <select name="currentTrl" class="form-control" required>
+                <option value="1">TRL 1 - Basic Principles Observed</option>
+                <option value="3">TRL 3 - Proof of Concept</option>
+                <option value="5">TRL 5 - Validated in Relevant Environment</option>
+                <option value="6">TRL 6 - Prototype Tested in Environment</option>
+                <option value="7" selected>TRL 7 - Demonstration in Operational Environment</option>
+                <option value="8">TRL 8 - System Complete & Qualified</option>
+                <option value="9">TRL 9 - Proven in Operational Environment</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Problem Statement *</label>
+            <textarea name="problemStatement" class="form-control" placeholder="What core problem is the startup solving?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Solution & Technology Description *</label>
+            <textarea name="solutionDescription" class="form-control" placeholder="Describe the innovative solution and technology stack" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Corporate CIN / Reg Number</label>
+              <input type="text" name="cinNumber" class="form-control" placeholder="e.g. U29309TZ2025PTC039821">
+            </div>
+            <div class="form-group">
+              <label>TANSEED Status</label>
+              <select name="tanseedStatus" class="form-control">
+                <option value="NONE">Not Applied</option>
+                <option value="PREPARING">Preparing Application</option>
+                <option value="APPLIED">Applied</option>
+                <option value="SHORTLISTED">Shortlisted for Pitch</option>
+                <option value="FINAL_STAGE">Final Grand Jury Stage</option>
+                <option value="SANCTIONED">Sanction Received</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="app.closeModal('modal-startup')">Cancel</button>
+        <button class="btn btn-primary" onclick="app.submitNewStartup()">Create Master Record</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: ADD HISTORICAL RECORD -->
+  <!-- ===================================================================== -->
+  <div id="modal-historical" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Log Verified Historical Support Interaction</h3>
+        <button class="modal-close" onclick="app.closeModal('modal-historical')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="anti-fabrication-notice" style="margin-bottom: 16px;">
+          <div class="text">
+            <p><strong>Note:</strong> Record only genuine historical support backed by documentary evidence (emails, meeting notes, pitch decks, photographs).</p>
+          </div>
+        </div>
+        <form id="form-create-history">
+          <div class="form-group">
+            <label>Startup *</label>
+            <select name="startupId" id="history-startup-select" class="form-control" required></select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Actual Historical Date *</label>
+              <input type="date" name="activityDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Activity Category *</label>
+              <select name="activityCategory" class="form-control" required>
+                <option value="FOUNDER_MEETING">Founder Discovery Meeting</option>
+                <option value="MENTOR_SESSION">Mentor Strategy Session</option>
+                <option value="PITCH_REVIEW">Pitch Deck Review</option>
+                <option value="INVESTOR_CONNECTION">Investor Introduction</option>
+                <option value="WORKSHOP_EVENT">Workshop / Event Participation</option>
+                <option value="PRODUCT_REVIEW">Product / Prototype Review</option>
+                <option value="TANSEED_FACILITATION">TANSEED Grant Facilitation</option>
+                <option value="INFRASTRUCTURE_ACCESS">Facility / Lab Access</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>AIIF Support Provided *</label>
+            <textarea name="aiifSupportDescription" class="form-control" placeholder="Detailed factual description of support given" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Participants *</label>
+            <input type="text" name="participantsText" class="form-control" placeholder="Names and designations of attendees" required>
+          </div>
+          <div class="form-group">
+            <label>Documentary Evidence Summary *</label>
+            <input type="text" name="evidenceSummary" class="form-control" placeholder="e.g. Email dated 24/10/2025, attached pitch deck v1.2" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="app.closeModal('modal-historical')">Cancel</button>
+        <button class="btn btn-gold" onclick="app.submitHistoricalSupport()">Save Historical Record</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: DOCUMENT PREVIEW / PRINT -->
+  <!-- ===================================================================== -->
+  <div id="modal-doc-preview" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3 id="preview-modal-title">Institutional Document Preview</h3>
+        <button class="modal-close" onclick="app.closeModal('modal-doc-preview')">&times;</button>
+      </div>
+      <div class="modal-body" id="doc-preview-content">
+        <!-- Rendered Letterhead -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="app.closeModal('modal-doc-preview')">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
