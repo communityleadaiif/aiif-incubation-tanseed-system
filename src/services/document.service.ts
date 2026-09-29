@@ -143,8 +143,9 @@ export class DocumentService {
     const fileHash = createHash('sha256').update(input.fileBuffer).digest('hex');
     const fileSize = input.fileBuffer.length;
 
-    // Structured storage directory: /data/evidence/{startupId}/{entityType}/
-    const uploadDir = path.join(process.cwd(), 'data', 'evidence', startup.aiif_startup_id, input.entityType);
+    // Structured storage directory: {baseEvidenceDir}/{startupId}/{entityType}/
+    const baseEvidenceDir = process.env.EVIDENCE_STORAGE_PATH || path.join(process.cwd(), 'data', 'evidence');
+    const uploadDir = path.join(baseEvidenceDir, startup.aiif_startup_id, input.entityType);
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }

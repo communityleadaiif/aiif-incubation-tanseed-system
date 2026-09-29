@@ -10,6 +10,12 @@ function getApp() {
     if (!process.env.DATABASE_PATH) {
       process.env.DATABASE_PATH = '/tmp/aiif_database.sqlite';
     }
+    if (!process.env.EVIDENCE_STORAGE_PATH) {
+      process.env.EVIDENCE_STORAGE_PATH = '/tmp/data/evidence';
+    }
+    if (!process.env.BACKUP_STORAGE_PATH) {
+      process.env.BACKUP_STORAGE_PATH = '/tmp/data/backups';
+    }
     const db = getDatabase();
     runMigrations(db);
     try {

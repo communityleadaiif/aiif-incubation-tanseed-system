@@ -12,9 +12,16 @@ export function runMigrations(db: DatabaseSync): string[] {
     );
   `);
 
-  const migrationsDir = path.join(process.cwd(), 'src', 'db', 'migrations');
-  if (!fs.existsSync(migrationsDir)) {
-    throw new Error(`Migrations directory not found at: ${migrationsDir}`);
+  const candidates = [
+    path.join(process.cwd(), 'src', 'db', 'migrations'),
+    path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), 'migrations'),
+    path.join(process.cwd(), 'dist', 'db', 'migrations'),
+    path.join(process.cwd(), 'migrations')
+  ];
+
+  let migrationsDir = candidates.find(dir => fs.existsSync(dir));
+  if (!migrationsDir) {
+    throw new Error(`Migrations directory not found in candidate paths: ${candidates.join(', ')}`);
   }
 
   const files = fs.readdirSync(migrationsDir)
